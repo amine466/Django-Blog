@@ -1,0 +1,15 @@
+{% extends "partials/blog_layout.html" %}
+{% block content %}
+<div class="col-lg-8 ">
+  <div class="breadcrumbs mb-4"> <a href="{% url "Index" %}">Home</a>
+    <span class="mx-1">/</span>  <a href="{% url "About" %}">About</a>
+  </div>
+</div>
+<div class="col-lg-8 mx-auto mb-5 mb-lg-0">
+  <article>
+    <div class="content text-left">
+      {{ settings.about|safe }}
+    </div>
+  </article>
+</div>
+{% endblock content %}

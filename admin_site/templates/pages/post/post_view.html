@@ -1,0 +1,21 @@
+{% extends "partials/layout.html" %}
+{% block content %}
+<main class="content px-3 py-2">
+    <div class="container">
+        <div class="mb-5 text-center">
+            <h2>{{ post.title }}</h2>
+            <p class="text-muted">Made by <strong>{{ post.author }}</strong> at {{ post.created_at }}</p>
+            <img src="{{ post.image.url }}">
+        </div>
+        <div class="card w-75 mx-auto">
+            <div class="card-body">
+                <div class="post-content">
+                    {{ post.content|safe }}  {# Affiche le texte formaté de l'éditeur #}
+                </div>
+                <hr>
+                <a href="{% url 'POST' %}" class="btn btn-outline-primary">Return</a>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}

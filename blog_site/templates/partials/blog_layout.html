@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+
+<!--
+ // WEBSITE: https://themefisher.com
+ // TWITTER: https://twitter.com/themefisher
+ // FACEBOOK: https://www.facebook.com/themefisher
+ // GITHUB: https://github.com/themefisher/
+-->
+
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<title>Reporter - HTML Blog Template</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+	<meta name="description" content="This is meta description">
+	<meta name="author" content="Themefisher">
+	<link rel="shortcut icon" href="{{ settings.icon.url }}" type="image/x-icon">
+	<link rel="icon" href="{{ settings.icon.url }}" type="image/x-icon">
+  
+  <!-- theme meta -->
+  <meta name="theme-name" content="reporter" />
+
+	<!-- # Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Neuton:wght@700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+	<!-- # CSS Plugins -->
+	<link rel="stylesheet" href="{% static "blog/plugins/bootstrap/bootstrap.min.css" %}">
+
+	<!-- # Main Style Sheet -->
+	<link rel="stylesheet" href="{% static "blog/css/style.css" %}">
+</head>
+<body>
+    <header class="navigation">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light px-0">
+                <a class="navbar-brand order-1 py-0" href="{% url "Index" %}">
+                    <img loading="prelaod" decoding="async" class="img-fluid" src="{{ settings.logo.url }}" alt="Reporter Hugo" style="width:125px; height:75px;">
+                </a>
+                <div class="navbar-actions order-3 ml-0 ml-md-4">
+                    <button aria-label="navbar toggler" class="navbar-toggler border-0" type="button" data-toggle="collapse"
+                    data-target="#navigation"> <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
+                    <ul class="navbar-nav mx-auto mt-3 mt-lg-0">
+                        {% for category in categories %}
+                        <li class="nav-item">
+                                <a class="nav-link" href="{% url "Category_Posts" category.slug %}">{{ category.name }}</a>
+                        </li>
+                        {% endfor %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url "About" %}">About Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="row no-gutters-lg">
+                    {% block content %}{% endblock content %}
+                    <div class="col-lg-4">
+                        <div class="widget-blocks"> 
+                            <div class="row">
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="widget">
+                                        <h2 class="section-title mb-3">Categories</h2>
+                                        <div class="widget-body">
+                                        <ul class="widget-list">
+                                            {% for category in categories %}
+                                            <li><a href="{% url "Category_Posts" category.slug %}">{{ category.name }}</a>
+                                            {% endfor %}
+                                        </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-dark mt-5">
+        <div class="container section">
+            <div class="row">
+            <div class="col-lg-10 mx-auto text-center">
+                <a class="d-inline-block mb-4 pb-2" href="{% url "Index" %}">
+                <img loading="prelaod" decoding="async" class="img-fluid" src="{{ settings.logo.url }}" alt="Blog Logo" style="width:125px; height:75px;">
+                </a>
+                <ul class="p-0 d-flex navbar-footer mb-0 list-unstyled">
+                    <li class="nav-item my-0"> <a class="nav-link" href="{% url "About" %}">About</a></li>
+                    {% for category in categories %}
+                    <li class="nav-item my-0"> <a class="nav-link" href="{% url "Category_Posts" category.slug %}">{{ category.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            </div>
+        </div>
+        <div class="copyright bg-dark content">Django Blog Developped by <a class="mr-2" href="https://github.com/amine466"><i class="fa-brands fa-github mr-1"></i>amine466</a>| Blog Template Designed By <a href="https://themefisher.com/">Themefisher</a></div>
+    </footer>
+    <!-- # JS Plugins -->
+    <script src="{% static "blog/plugins/jquery/jquery.min.js" %}"></script>
+    <script src="{% static "blog/plugins/bootstrap/bootstrap.min.js" %}"></script>  
+    <!-- Main Script -->
+    <script src="{% static "blog/js/script.js" %}"></script>
+</body>
+</html>

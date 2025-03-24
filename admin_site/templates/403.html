@@ -1,0 +1,10 @@
+{% extends "partials/layout.html" %}
+{% block content %}
+<main class="content px-3 py-2">
+    <div class="container text-center mt-5">
+        <h1 class="text-danger">403 Forbidden</h1>
+        <p>You do not have permission to access this page.</p>
+        <a href="{% url 'HOME' %}" class="btn btn-primary">Go Back to Home</a>
+    </div>
+</main>
+{% endblock %}

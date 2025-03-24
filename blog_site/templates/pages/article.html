@@ -1,0 +1,21 @@
+{% extends "partials/blog_layout.html" %}
+{% block content %}
+<div class="col-lg-8 mb-5 mb-lg-0">
+	<article>
+		<img loading="lazy" decoding="async" src="{{ post.image.url }}" alt="Post Thumbnail" class="w-100">
+		<ul class="post-meta mb-2 mt-4">
+			<li>
+				<i class="fa-regular fa-calendar" fill="currentColor" style="margin-right:5px;margin-top:-4px"></i>
+				<span>{{ post.updated_at }}</span>
+			</li>
+		</ul>
+		<h1 class="my-3">{{ post.title }}</h1>
+		<ul class="post-meta mb-4">
+			<li>{{ post.category }}</li>
+		</ul>
+		<div class="content text-left">
+			{{ post.content|safe }}
+		</div>
+	</article>
+</div>
+{% endblock content %}

@@ -1,0 +1,85 @@
+{% extends "partials/blog_layout.html" %}
+{% block content %}
+
+<div class="col-12">
+  <h2 class="section-title">Latest Articles</h2>
+</div>
+<div class="col-lg-8 mb-5 mb-lg-0">
+  <div class="row">
+    {% if latest_post %}
+    <div class="col-12 mb-4">
+      <article class="card article-card">
+        <a href="{% url 'Article_View' latest_post.slug %}">
+          <div class="card-image">
+            <div class="post-info">
+              <span class="text-uppercase">{{ latest_post.updated_at|date:"d M Y" }}</span>
+            </div>
+            <img loading="lazy" decoding="async" src="{{ latest_post.image.url }}" alt="Post Thumbnail" class="w-100">
+          </div>
+        </a>
+        <div class="card-body px-0 pb-1">
+          <ul class="post-meta mb-2">
+            <li><a href="{% url 'Category_Posts' latest_post.category.slug %}">{{ latest_post.category.name }}</a></li>
+          </ul>
+          <h2 class="h1"><a class="post-title" href="{% url 'Article_View' latest_post.slug %}">{{ latest_post.title }}</a></h2>
+          <p class="card-text">{{ latest_post.content|safe|slice:":20" }}</p>
+          <div class="content">
+            <a class="read-more-btn" href="{% url 'Article_View' latest_post.slug %}">Read Full Article</a>
+          </div>
+        </div>
+      </article>
+    </div>
+    {% endif %}
+    {% for post in posts %}
+    <div class="col-md-6 mb-4">
+      <article class="card article-card article-card-sm h-100">
+        <a href="{% url 'Article_View' post.slug %}">
+          <div class="card-image">
+            <div class="post-info">
+              <span class="text-uppercase">{{ post.updated_at|date:"d M Y" }}</span>
+            </div>
+            <img loading="lazy" decoding="async" src="{{ post.image.url }}" alt="Post Thumbnail" class="w-100">
+          </div>
+        </a>
+        <div class="card-body px-0 pb-0">
+          <ul class="post-meta mb-2">
+            <li><a href="{% url 'Category_Posts' post.category.slug %}">{{ post.category.name }}</a></li>
+          </ul>
+          <h2><a class="post-title" href="{% url 'Article_View' post.slug %}">{{ post.title }}</a></h2>
+          <p class="card-text">{{ post.content|safe|slice:":20" }}</p>
+          <div class="content">
+            <a class="read-more-btn" href="{% url 'Article_View' post.slug %}">Read Full Article</a>
+          </div>
+        </div>
+      </article>
+    </div>
+    {% endfor %}
+        <!-- Pagination -->
+    <div class="col-12">
+      <nav class="mt-4">
+        <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+              &laquo;
+            </a>
+          </li>
+          {% endif %}
+          {% for num in page_obj.paginator.page_range %}
+          <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+          </li>
+          {% endfor %}
+          {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+              &raquo;
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+{% endblock content %}
