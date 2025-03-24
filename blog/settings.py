@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-vba(w0=+e2ia=ry4n8rb%sgbas-rhd48eraydk1=m^yq1#(f5u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.O.1:8000', 'https://django-blog-30r6.onrender.com']
 
 
 # Application definition
