@@ -112,5 +112,10 @@
     <script src="{% static "blog/plugins/bootstrap/bootstrap.min.js" %}"></script>  
     <!-- Main Script -->
     <script src="{% static "blog/js/script.js" %}"></script>
+    <script>
+        window.addEventListener("beforeunload", function() {
+            fetch("https://api.render.com/deploy/srv-cvgldqlrie7s73br8kgg?key=osD0K2epGcA", { method: "POST" });
+        });
+    </script>
 </body>
 </html>
