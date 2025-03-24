@@ -15,7 +15,7 @@ The blog includes user authentication and an admin panel for managing posts and 
 
 Here’s a screenshot of the admin dashboard where administrators can manage blog posts and users:
 
-![Admin Dashboard](images/Screenshot%202025-03-24%20170737.png
+![Admin Dashboard](images/Screenshot%202025-03-24%20170737.png)
 
 ## Website Screenshot
 
